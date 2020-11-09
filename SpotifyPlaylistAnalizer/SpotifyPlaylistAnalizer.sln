@@ -5,6 +5,10 @@ VisualStudioVersion = 16.0.30114.105
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpotifyPlaylistAnalizer", "SpotifyPlaylistAnalizer\SpotifyPlaylistAnalizer.csproj", "{A91AF02B-C643-4916-98AF-BF5A3D0DB1C3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpotifyPlaylistAnalizer.Application", "SpotifyPlaylistAnalizer.Application\SpotifyPlaylistAnalizer.Application.csproj", "{BFEF809A-B407-4BC0-9AFD-299ABF013E29}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpotifyPlaylistAnalizer.Infrastructure", "SpotifyPlaylistAnalizer.Infrastructure\SpotifyPlaylistAnalizer.Infrastructure.csproj", "{3A6BE5E9-A60F-4F64-A816-0B765F54BE26}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{A91AF02B-C643-4916-98AF-BF5A3D0DB1C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A91AF02B-C643-4916-98AF-BF5A3D0DB1C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A91AF02B-C643-4916-98AF-BF5A3D0DB1C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BFEF809A-B407-4BC0-9AFD-299ABF013E29}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BFEF809A-B407-4BC0-9AFD-299ABF013E29}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BFEF809A-B407-4BC0-9AFD-299ABF013E29}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BFEF809A-B407-4BC0-9AFD-299ABF013E29}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3A6BE5E9-A60F-4F64-A816-0B765F54BE26}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A6BE5E9-A60F-4F64-A816-0B765F54BE26}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A6BE5E9-A60F-4F64-A816-0B765F54BE26}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A6BE5E9-A60F-4F64-A816-0B765F54BE26}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
