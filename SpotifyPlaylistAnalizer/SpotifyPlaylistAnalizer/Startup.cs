@@ -14,6 +14,9 @@ namespace SpotifyPlaylistAnalizer
     {
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddControllers();
+            services.AddSwaggerGen();
+
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -21,6 +24,11 @@ namespace SpotifyPlaylistAnalizer
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseSwagger();
+                app.UseSwaggerUI(conf =>
+                {
+                    conf.SwaggerEndpoint("/swagger/v1/swagger.json", "Spotify playlist analizer");
+                });
             }
 
             app.UseRouting();
