@@ -12,13 +12,16 @@ namespace SpotifyPlaylistAnalizer
 {
     public class Program
     {
-        public static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
             CreateWebHostBuilder(args).Build().Run();
+
+
+
         }
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-            WebHost.CreateDefaultBuilder(args).ConfigureAppConfiguration((hostingContext, config)=>
+            WebHost.CreateDefaultBuilder(args).ConfigureAppConfiguration((hostingContext, config) =>
             {
                 var env = hostingContext.HostingEnvironment;
 
@@ -26,6 +29,8 @@ namespace SpotifyPlaylistAnalizer
                         .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true, reloadOnChange: true)
                         .AddJsonFile("appsettings.Local.json", optional: true, reloadOnChange: true);
 
-            }).UseStartup<Startup>();
+                
+            })
+            .UseStartup<Startup>();
     }
 }
