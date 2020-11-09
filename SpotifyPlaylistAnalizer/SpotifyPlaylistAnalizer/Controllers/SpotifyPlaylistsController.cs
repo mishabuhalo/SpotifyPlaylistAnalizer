@@ -7,7 +7,7 @@ namespace SpotifyPlaylistAnalizer.Controllers
 {
     [Route("api/playlists")]
     [ApiController]
-    public class SpotifyPlaylistsController : ControllerBase
+    public class SpotifyPlaylistsController : BaseController
     {
         private readonly ISpotifyService _spotifyService;
 
