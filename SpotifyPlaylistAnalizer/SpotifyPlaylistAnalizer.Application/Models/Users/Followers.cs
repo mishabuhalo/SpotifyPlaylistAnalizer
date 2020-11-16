@@ -2,7 +2,7 @@
 
 namespace SpotifyPlaylistAnalizer.Application.Models.Users
 {
-    public class Folowers
+    public class Followers
     {
         [JsonPropertyName("href")]
         public string ApiUrl { get; set; }

@@ -9,7 +9,7 @@ namespace SpotifyPlaylistAnalizer.Application.Models
         [JsonPropertyName("display_name")]
         public string Name { get; set; }
         [JsonPropertyName("followers")]
-        public Folowers Folowers { get; set; }
+        public Followers Folowers { get; set; }
         [JsonPropertyName("id")]
         public string Id { get; set; }
         [JsonPropertyName("type")]
