@@ -7,5 +7,6 @@ namespace SpotifyPlaylistAnalizer.Application.Interfaces
     {
         Task<string> GetPlaylistInfoById(string playListId);
         Task<string> GetTrackInfoById(string trackId);
+        Task<string> GetUserInfo(string userId);
     }
 }
