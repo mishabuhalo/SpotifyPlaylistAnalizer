@@ -1,4 +1,5 @@
-﻿using System.Net.Http;
+﻿using SpotifyPlaylistAnalizer.Application.Models;
+using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace SpotifyPlaylistAnalizer.Application.Interfaces
@@ -7,6 +8,6 @@ namespace SpotifyPlaylistAnalizer.Application.Interfaces
     {
         Task<string> GetPlaylistInfoById(string playListId);
         Task<string> GetTrackInfoById(string trackId);
-        Task<string> GetUserInfo(string userId);
+        Task<User> GetUserInfo(string userId);
     }
 }

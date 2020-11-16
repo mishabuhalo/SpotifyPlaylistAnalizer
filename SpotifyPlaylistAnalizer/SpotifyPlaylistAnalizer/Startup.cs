@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using SpotifyPlaylistAnalizer.Application.SpotifyAPI.User;
+using SpotifyPlaylistAnalizer.Application.SpotifyAPI.Users;
 using SpotifyPlaylistAnalizer.Infrastructure.Extensions;
 
 namespace SpotifyPlaylistAnalizer

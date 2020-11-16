@@ -1,4 +1,6 @@
 ﻿using SpotifyPlaylistAnalizer.Application.Interfaces;
+using SpotifyPlaylistAnalizer.Application.Models;
+using SpotifyPlaylistAnalizer.Infrastructure.Extensions;
 using System.Net.Http;
 using System.Threading.Tasks;
 
@@ -35,7 +37,7 @@ namespace SpotifyPlaylistAnalizer.Infrastructure.Services
             return await response.Content.ReadAsStringAsync();
         }
 
-        public async Task<string> GetUserInfo(string userId)
+        public async Task<User> GetUserInfo(string userId)
         {
             HttpClient httpClient = await _spotifyHttpClientFactory.CreateHttpClient();
 
@@ -43,7 +45,7 @@ namespace SpotifyPlaylistAnalizer.Infrastructure.Services
 
             var response = await httpClient.SendAsync(httpRequestMessage);
 
-            return await response.Content.ReadAsStringAsync();
+            return await response.Content.ReadAsJsonAsync<User>();
         }
     }
 }
