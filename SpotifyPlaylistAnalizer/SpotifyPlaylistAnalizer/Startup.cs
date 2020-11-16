@@ -1,8 +1,10 @@
+using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using SpotifyPlaylistAnalizer.Application.SpotifyAPI.User;
 using SpotifyPlaylistAnalizer.Infrastructure.Extensions;
 
 namespace SpotifyPlaylistAnalizer
@@ -21,6 +23,7 @@ namespace SpotifyPlaylistAnalizer
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddMediatR(typeof(GetUserInfoQuery).Assembly);
             services.AddSwaggerGen();
             services.AddInfrastructure(_configuration);
         }
