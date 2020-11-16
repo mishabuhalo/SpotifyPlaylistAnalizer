@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SpotifyPlaylistAnalizer.Application.Interfaces;
+using SpotifyPlaylistAnalizer.Application.SpotifyAPI.Playlists.Queries;
 using System.Text.Json;
 using System.Threading.Tasks;
 
@@ -9,19 +10,14 @@ namespace SpotifyPlaylistAnalizer.Controllers
     [ApiController]
     public class SpotifyPlaylistsController : BaseController
     {
-        private readonly ISpotifyService _spotifyService;
 
-        public SpotifyPlaylistsController(ISpotifyService spotifyService)
-        {
-            _spotifyService = spotifyService;
-        }
 
         [HttpGet]
         public async Task<IActionResult> GetPlaylistInfo(string playlistId)
         {
-            dynamic test = JsonSerializer.Deserialize<dynamic>(await _spotifyService.GetPlaylistInfoById(playlistId));
+            var result = await Mediator.Send(new GetPlayListInfoByIdQuery() { PlayListidentifier = playlistId});
 
-            return new JsonResult (test);
+            return Ok(result);
         }
     }
 }

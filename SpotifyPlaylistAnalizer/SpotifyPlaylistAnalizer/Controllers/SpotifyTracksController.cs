@@ -23,8 +23,8 @@ namespace SpotifyPlaylistAnalizer.Controllers
         [HttpGet]
         public async Task<IActionResult> GetTrackInfo(string trackId)
         {
-            dynamic test = JsonSerializer.Deserialize<dynamic>(await _spotifyService.GetTrackInfoById(trackId));
-            return Ok(test);
+           var result = await _spotifyService.GetTrackInfoById(trackId);
+            return Ok(result);
         }
     }
 }
