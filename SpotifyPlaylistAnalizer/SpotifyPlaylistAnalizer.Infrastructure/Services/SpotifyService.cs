@@ -1,5 +1,7 @@
 ﻿using SpotifyPlaylistAnalizer.Application.Interfaces;
 using SpotifyPlaylistAnalizer.Application.Models;
+using SpotifyPlaylistAnalizer.Application.Models.Playlist;
+using SpotifyPlaylistAnalizer.Application.Models.Tracks;
 using SpotifyPlaylistAnalizer.Infrastructure.Extensions;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -15,7 +17,7 @@ namespace SpotifyPlaylistAnalizer.Infrastructure.Services
             _spotifyHttpClientFactory = spotifyHttpClientFactory;
         }
 
-        public async Task<string> GetPlaylistInfoById(string playListId)
+        public async Task<PlaylistFull> GetPlaylistInfoById(string playListId)
         {
             HttpClient httpClient = await _spotifyHttpClientFactory.CreateHttpClient();
 
@@ -23,10 +25,12 @@ namespace SpotifyPlaylistAnalizer.Infrastructure.Services
 
             var response = await httpClient.SendAsync(httpRequestMessage);
 
-            return await response.Content.ReadAsStringAsync();
+            var test = await response.Content.ReadAsStringAsync();
+
+            return await response.Content.ReadAsJsonAsync<PlaylistFull>();
         }
 
-        public async Task<string> GetTrackInfoById(string trackId)
+        public async Task<TrackFull> GetTrackInfoById(string trackId)
         {
             HttpClient httpClient = await _spotifyHttpClientFactory.CreateHttpClient();
 
@@ -34,7 +38,7 @@ namespace SpotifyPlaylistAnalizer.Infrastructure.Services
 
             var response = await httpClient.SendAsync(httpRequestMessage);
 
-            return await response.Content.ReadAsStringAsync();
+            return await response.Content.ReadAsJsonAsync<TrackFull>();
         }
 
         public async Task<User> GetUserInfo(string userId)
