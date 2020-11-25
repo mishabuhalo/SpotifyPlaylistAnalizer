@@ -1,7 +1,7 @@
 ﻿using SpotifyPlaylistAnalizer.Application.Models;
+using SpotifyPlaylistAnalizer.Application.Models.AudioAnalis;
 using SpotifyPlaylistAnalizer.Application.Models.Playlist;
 using SpotifyPlaylistAnalizer.Application.Models.Tracks;
-using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace SpotifyPlaylistAnalizer.Application.Interfaces
@@ -11,5 +11,6 @@ namespace SpotifyPlaylistAnalizer.Application.Interfaces
         Task<PlaylistFull> GetPlaylistInfoById(string playListId);
         Task<TrackFull> GetTrackInfoById(string trackId);
         Task<User> GetUserInfo(string userId);
+        Task<AudioFeatures> GetTrackAudioFeature(string trackId);
     }
 }

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SpotifyPlaylistAnalizer.Application.Interfaces;
+using SpotifyPlaylistAnalizer.Application.SpotifyAPI.Tracks.Queries;
 
 namespace SpotifyPlaylistAnalizer.Controllers
 {
@@ -13,17 +14,19 @@ namespace SpotifyPlaylistAnalizer.Controllers
     [ApiController]
     public class SpotifyTracksController : BaseController
     {
-        private readonly ISpotifyService _spotifyService;
 
-        public SpotifyTracksController(ISpotifyService spotifyService)
-        {
-            _spotifyService = spotifyService;
-        }
 
         [HttpGet]
         public async Task<IActionResult> GetTrackInfo(string trackId)
         {
-           var result = await _spotifyService.GetTrackInfoById(trackId);
+            var result = await Mediator.Send(new GetTrackByIdQuery() { TrackIdentifier = trackId });
+            return Ok(result);
+        }
+
+        [HttpGet("audio-features")]
+        public async Task<IActionResult> GetTrackAudioFeatures(string trackId)
+        {
+            var result = await Mediator.Send(new GetTrackAudioFeaturesQuery() { TarckId = trackId });
             return Ok(result);
         }
     }
