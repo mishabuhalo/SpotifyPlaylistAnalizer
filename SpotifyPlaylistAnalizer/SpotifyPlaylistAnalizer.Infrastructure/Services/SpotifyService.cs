@@ -63,5 +63,15 @@ namespace SpotifyPlaylistAnalizer.Infrastructure.Services
 
             return await response.Content.ReadAsJsonAsync<User>();
         }
+
+        public async Task<AudioAnalysis> GetTrackAudioAnalysis(string trackId)
+        {
+            HttpClient httpClient = await _spotifyHttpClientFactory.CreateHttpClient();
+            HttpRequestMessage httpRequestMessage = new HttpRequestMessage(HttpMethod.Get, $"audio-analysis/{trackId}");
+
+            var response = await httpClient.SendAsync(httpRequestMessage);
+
+            return await response.Content.ReadAsJsonAsync<AudioAnalysis>();
+        }
     }
 }

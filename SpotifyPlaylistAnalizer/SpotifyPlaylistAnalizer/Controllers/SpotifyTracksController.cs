@@ -29,5 +29,13 @@ namespace SpotifyPlaylistAnalizer.Controllers
             var result = await Mediator.Send(new GetTrackAudioFeaturesQuery() { TarckId = trackId });
             return Ok(result);
         }
+
+        [HttpGet("audio-analysis")]
+        public async Task<IActionResult> GetTrackAudioAnalysis(string trackId)
+        {
+            var result = await Mediator.Send(new GetTrackAudioAnalysisQuery() { TrackId = trackId });
+
+            return Ok(result);
+        }
     }
 }
