@@ -13,9 +13,9 @@ namespace SpotifyPlaylistAnalizer.Application.SpotifyAPI.Tracks.Queries
 
     public class GetTeackByIdQueryHandler : IRequestHandler<GetTrackByIdQuery, TrackFull>
     {
-        private readonly ISpotifyService _spotifyService;
+        private readonly ISpotifyTracksService _spotifyService;
 
-        public GetTeackByIdQueryHandler(ISpotifyService spotifyService)
+        public GetTeackByIdQueryHandler(ISpotifyTracksService spotifyService)
         {
             _spotifyService = spotifyService;
         }

@@ -13,7 +13,9 @@ namespace SpotifyPlaylistAnalizer.Infrastructure.Extensions
             services.Configure<SpotifyTokenSettings>(configuration.GetSection("SpotifyTokenSettings"));
             services.AddTransient<ISpotifyTokenService, SpotifyTokenService>();
             services.AddHttpClient<ISpotifyHttpClientFactory, SpotifyHttpClientFactory>();
-            services.AddTransient<ISpotifyService, SpotifyService>();
+            services.AddTransient<ISpotifyTracksService, SpotifyTrackService>();
+            services.AddTransient<ISpotifyUserService, SpotifyUserService>();
+            services.AddTransient<ISpotifyPlaylistService, SpotifyPlaylistService>();
             return services;
         }
     }

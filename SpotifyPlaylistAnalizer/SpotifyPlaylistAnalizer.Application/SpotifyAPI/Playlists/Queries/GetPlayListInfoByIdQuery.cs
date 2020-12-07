@@ -13,9 +13,9 @@ namespace SpotifyPlaylistAnalizer.Application.SpotifyAPI.Playlists.Queries
 
     public class GetPlayListInfoByIdQueryHandler : IRequestHandler<GetPlayListInfoByIdQuery, PlaylistFull>
     {
-        private ISpotifyService _spotifyService;
+        private ISpotifyPlaylistService _spotifyService;
 
-        public GetPlayListInfoByIdQueryHandler(ISpotifyService spotifyService)
+        public GetPlayListInfoByIdQueryHandler(ISpotifyPlaylistService spotifyService)
         {
             _spotifyService = spotifyService;
         }

@@ -13,9 +13,9 @@ namespace SpotifyPlaylistAnalizer.Application.SpotifyAPI.Tracks.Queries
 
     public class GetTrackAudioFeaturesQueryHandler : IRequestHandler<GetTrackAudioFeaturesQuery, AudioFeatures>
     {
-        private readonly ISpotifyService _spotifyService;
+        private readonly ISpotifyTracksService _spotifyService;
 
-        public GetTrackAudioFeaturesQueryHandler(ISpotifyService spotifyService)
+        public GetTrackAudioFeaturesQueryHandler(ISpotifyTracksService spotifyService)
         {
             _spotifyService = spotifyService;
         }

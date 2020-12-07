@@ -6,12 +6,10 @@ using System.Threading.Tasks;
 
 namespace SpotifyPlaylistAnalizer.Application.Interfaces
 {
-    public interface ISpotifyService
+    public interface ISpotifyTracksService
     {
-        Task<PlaylistFull> GetPlaylistInfoById(string playListId);
         Task<TrackFull> GetTrackInfoById(string trackId);
-        Task<User> GetUserInfo(string userId);
         Task<AudioFeatures> GetTrackAudioFeature(string trackId);
-        Task<AudioAnalysis> GetTrackAudioAnalysis(string trackId);
+        Task<AudioAnalysisFull> GetTrackAudioAnalysis(string trackId);
     }
 }

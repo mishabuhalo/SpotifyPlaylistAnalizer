@@ -9,26 +9,13 @@ using System.Threading.Tasks;
 
 namespace SpotifyPlaylistAnalizer.Infrastructure.Services
 {
-    public class SpotifyService: ISpotifyService
+    public class SpotifyTrackService: ISpotifyTracksService
     {
         private readonly ISpotifyHttpClientFactory _spotifyHttpClientFactory;
 
-        public SpotifyService(ISpotifyHttpClientFactory spotifyHttpClientFactory)
+        public SpotifyTrackService(ISpotifyHttpClientFactory spotifyHttpClientFactory)
         {
             _spotifyHttpClientFactory = spotifyHttpClientFactory;
-        }
-
-        public async Task<PlaylistFull> GetPlaylistInfoById(string playListId)
-        {
-            HttpClient httpClient = await _spotifyHttpClientFactory.CreateHttpClient();
-
-            HttpRequestMessage httpRequestMessage = new HttpRequestMessage(HttpMethod.Get, $"playlists/{playListId}");
-
-            var response = await httpClient.SendAsync(httpRequestMessage);
-
-            var test = await response.Content.ReadAsStringAsync();
-
-            return await response.Content.ReadAsJsonAsync<PlaylistFull>();
         }
 
         public async Task<TrackFull> GetTrackInfoById(string trackId)
@@ -53,25 +40,14 @@ namespace SpotifyPlaylistAnalizer.Infrastructure.Services
             return await response.Content.ReadAsJsonAsync<AudioFeatures>();
         }
 
-        public async Task<User> GetUserInfo(string userId)
-        {
-            HttpClient httpClient = await _spotifyHttpClientFactory.CreateHttpClient();
-
-            HttpRequestMessage httpRequestMessage = new HttpRequestMessage(HttpMethod.Get, $"users/{userId}");
-
-            var response = await httpClient.SendAsync(httpRequestMessage);
-
-            return await response.Content.ReadAsJsonAsync<User>();
-        }
-
-        public async Task<AudioAnalysis> GetTrackAudioAnalysis(string trackId)
+        public async Task<AudioAnalysisFull> GetTrackAudioAnalysis(string trackId)
         {
             HttpClient httpClient = await _spotifyHttpClientFactory.CreateHttpClient();
             HttpRequestMessage httpRequestMessage = new HttpRequestMessage(HttpMethod.Get, $"audio-analysis/{trackId}");
 
             var response = await httpClient.SendAsync(httpRequestMessage);
 
-            return await response.Content.ReadAsJsonAsync<AudioAnalysis>();
+            return await response.Content.ReadAsJsonAsync<AudioAnalysisFull>();
         }
     }
 }

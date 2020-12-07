@@ -14,9 +14,9 @@ namespace SpotifyPlaylistAnalizer.Application.SpotifyAPI.Users
 
     public class GetUserInfoQueryHandler : IRequestHandler<GetUserInfoQuery, UserViewModel>
     {
-        private readonly ISpotifyService _spotifyService;
+        private readonly ISpotifyUserService _spotifyService;
 
-        public GetUserInfoQueryHandler(ISpotifyService spotifyService)
+        public GetUserInfoQueryHandler(ISpotifyUserService spotifyService)
         {
             _spotifyService = spotifyService;
         }

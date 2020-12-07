@@ -5,7 +5,7 @@ using System.Text.Json.Serialization;
 
 namespace SpotifyPlaylistAnalizer.Application.Models.AudioAnalis
 {
-    public class AudioAnalysis
+    public class AudioAnalysisFull
     {
         [JsonPropertyName("bars")]
         public List<TimeInterval> Bars { get; set; }

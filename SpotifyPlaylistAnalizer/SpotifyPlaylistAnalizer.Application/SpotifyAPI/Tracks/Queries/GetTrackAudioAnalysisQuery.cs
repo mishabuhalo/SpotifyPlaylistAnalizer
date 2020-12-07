@@ -6,21 +6,21 @@ using System.Threading.Tasks;
 
 namespace SpotifyPlaylistAnalizer.Application.SpotifyAPI.Tracks.Queries
 {
-    public class GetTrackAudioAnalysisQuery: IRequest<AudioAnalysis>
+    public class GetTrackAudioAnalysisQuery: IRequest<AudioAnalysisFull>
     {
         public string TrackId { get; set; }
     }
 
-    public class GetTrackAudioAnalysisQueryHandler : IRequestHandler<GetTrackAudioAnalysisQuery, AudioAnalysis>
+    public class GetTrackAudioAnalysisQueryHandler : IRequestHandler<GetTrackAudioAnalysisQuery, AudioAnalysisFull>
     {
-        private readonly ISpotifyService _spotifyService;
+        private readonly ISpotifyTracksService _spotifyService;
 
-        public GetTrackAudioAnalysisQueryHandler(ISpotifyService spotifyService)
+        public GetTrackAudioAnalysisQueryHandler(ISpotifyTracksService spotifyService)
         {
             _spotifyService = spotifyService;
         }
 
-        public async Task<AudioAnalysis> Handle(GetTrackAudioAnalysisQuery request, CancellationToken cancellationToken)
+        public async Task<AudioAnalysisFull> Handle(GetTrackAudioAnalysisQuery request, CancellationToken cancellationToken)
         {
             return await _spotifyService.GetTrackAudioAnalysis(request.TrackId);
         }
