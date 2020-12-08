@@ -11,5 +11,6 @@ namespace SpotifyPlaylistAnalizer.Application.Interfaces
         Task<TrackFull> GetTrackInfoById(string trackId);
         Task<AudioFeatures> GetTrackAudioFeature(string trackId);
         Task<AudioAnalysisFull> GetTrackAudioAnalysis(string trackId);
+        Task<AvarageAudioAnalysis> GetTrackAvarageAudioAnalysis(string trackId);
     }
 }

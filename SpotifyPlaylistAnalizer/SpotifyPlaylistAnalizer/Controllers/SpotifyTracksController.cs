@@ -37,5 +37,13 @@ namespace SpotifyPlaylistAnalizer.Controllers
 
             return Ok(result);
         }
+
+        [HttpGet("audio-analysis/avarage")]
+        public async Task<IActionResult> GetAvarageTrackAudioAnalysis(string trackId)
+        {
+            var result = await Mediator.Send(new GetTrackAvarageAudioAnalysisQuery() { TrackId = trackId });
+
+            return Ok(result);
+        }
     }
 }
