@@ -57,6 +57,8 @@ namespace SpotifyPlaylistAnalizer.Infrastructure.Services
         public async Task<AvarageAudioAnalysis> GetTrackAvarageAudioAnalysis(string trackId)
         {
             var fullAudioAnalis = await GetTrackAudioAnalysis(trackId);
+            if (fullAudioAnalis.Sections == null)
+                return null;
 
             var result = new AvarageAudioAnalysis();
             result.AvarageBars = new AvarageTimeInterval();
@@ -90,6 +92,8 @@ namespace SpotifyPlaylistAnalizer.Infrastructure.Services
 
         public AvarageSection CalculateAvarageSection(List<Section> sections)
         {
+            if (sections == null)
+                return null;
             float fullDuration = 0f;
             float fullLoudness = 0f;
             float fullTempo = 0f;
@@ -129,9 +133,9 @@ namespace SpotifyPlaylistAnalizer.Infrastructure.Services
             {
                 AvarageDuration = fullDuration / sections.Count,
                 AvarageLoudness = fullLoudness / sections.Count,
-                AvarageTempo = fullTempo / reliableTempoCount,
-                AvarageKey = (int)fullKey / reliableKeyCount,
-                AvarageMode = (int)fullKey / reliableModeCount,
+                AvarageTempo = reliableTempoCount !=0 ? fullTempo / reliableTempoCount: 0,
+                AvarageKey = reliableKeyCount !=0 ? (int)fullKey / reliableKeyCount : 0,
+                AvarageMode = reliableModeCount!=0? (int)fullKey / reliableModeCount: 0,
                 Count = counter
             };
         }

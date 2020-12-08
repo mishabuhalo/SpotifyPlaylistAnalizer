@@ -11,5 +11,6 @@ namespace SpotifyPlaylistAnalizer.Application.Interfaces
         Task<List<AudioFeatures>> GetPlayListAudioFeatures(string playlistId);
         Task<AudioFeatures> GetPlayListAvarageAudioFeature(string playlistId);
         Task<PlaylistSimplified> GetPlaylistSimplifiedAsync(string playlistId);
+        Task<List<AvarageAudioAnalysis>> GetPlaylistAudioAnalysis(string playlistId);
     }
 }

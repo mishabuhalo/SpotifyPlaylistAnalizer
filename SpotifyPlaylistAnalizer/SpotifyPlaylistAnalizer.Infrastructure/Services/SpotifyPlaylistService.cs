@@ -82,6 +82,25 @@ namespace SpotifyPlaylistAnalizer.Infrastructure.Services
             return await response.Content.ReadAsJsonAsync<PlaylistFull>();
         }
 
+        public async Task<List<AvarageAudioAnalysis>> GetPlaylistAudioAnalysis(string playlistId)
+        {
+            var playlist = await GetPlaylistSimplifiedAsync(playlistId);
+            var result = new List<AvarageAudioAnalysis>();
+            PagingModel<PlayListTrackSimplified> currentPage = playlist.Tracks;
+
+            while (currentPage.Items != null)
+            {
+                foreach (var track in currentPage.Items)
+                {
+                    result.Add(await _spotifyTracksService.GetTrackAvarageAudioAnalysis(track.Track.Id));
+                }
+
+                currentPage = await GetNextPage(currentPage.Next);
+            }
+
+            return result;
+        }
+
         public async Task<AudioFeatures> GetPlayListAvarageAudioFeature(string playlistId)
         {
             var playlistAudioFeatures = await GetPlayListAudioFeatures(playlistId);
