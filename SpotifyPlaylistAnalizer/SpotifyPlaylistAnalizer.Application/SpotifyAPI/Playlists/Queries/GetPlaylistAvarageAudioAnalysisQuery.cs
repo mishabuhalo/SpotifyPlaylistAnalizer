@@ -1,4 +1,5 @@
-﻿using MediatR;
+﻿using FluentValidation;
+using MediatR;
 using SpotifyPlaylistAnalizer.Application.Interfaces;
 using SpotifyPlaylistAnalizer.Application.Models.AudioAnalis;
 using System.Collections.Generic;
@@ -26,4 +27,5 @@ namespace SpotifyPlaylistAnalizer.Application.SpotifyAPI.Playlists.Queries
             return await _spotifyPlaylistService.GetPlaylistAudioAnalysis(request.PlaylistId);
         }
     }
+
 }
