@@ -28,4 +28,12 @@ namespace SpotifyPlaylistAnalizer.Application.SpotifyAPI.Playlists.Queries
         }
     }
 
+    public class GetPlaylistAvarageAudioAnalysisQueryValidator : AbstractValidator<GetPlaylistAvarageAudioAnalysisQuery>
+    {
+        public GetPlaylistAvarageAudioAnalysisQueryValidator()
+        {
+            RuleFor(query => query.PlaylistId).NotNull().WithMessage("Play list id is required!");
+        }
+    }
+
 }

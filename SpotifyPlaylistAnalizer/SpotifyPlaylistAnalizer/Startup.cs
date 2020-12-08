@@ -8,6 +8,7 @@ using Microsoft.Extensions.Hosting;
 using SpotifyPlaylistAnalizer.Application.SpotifyAPI.Playlists.Queries;
 using SpotifyPlaylistAnalizer.Application.SpotifyAPI.Users;
 using SpotifyPlaylistAnalizer.Infrastructure.Extensions;
+using SpotifyPlaylistAnalizer.Middleware;
 
 namespace SpotifyPlaylistAnalizer
 {
@@ -44,6 +45,8 @@ namespace SpotifyPlaylistAnalizer
             app.UseSwaggerUI(conf => {
                 conf.SwaggerEndpoint("/swagger/v1/swagger.json", "Spotify playlist analizer");
             });
+
+            app.UseMiddleware<ExceptionMiddleware>();
 
             app.UseRouting();
 

@@ -15,6 +15,7 @@ namespace SpotifyPlaylistAnalizer.Controllers
         [HttpGet]
         public async Task<IActionResult> GetPlaylistInfo(string playlistId)
         {
+            throw new System.Exception("test");
             var result = await Mediator.Send(new GetPlayListInfoByIdQuery() { PlayListidentifier = playlistId});
 
             return Ok(result);
