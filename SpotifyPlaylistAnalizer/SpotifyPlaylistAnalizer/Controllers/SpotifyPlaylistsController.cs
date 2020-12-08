@@ -19,5 +19,14 @@ namespace SpotifyPlaylistAnalizer.Controllers
 
             return Ok(result);
         }
+
+        [HttpGet]
+        [Route("simplified")]
+        public async Task<IActionResult> GetPlaylistInfoSimplified(string playlistId)
+        {
+            var result = await Mediator.Send(new GetPlayListInfoSimplifiedQuery() { PlayListidentifier = playlistId });
+
+            return Ok(result);
+        }
     }
 }
