@@ -28,5 +28,23 @@ namespace SpotifyPlaylistAnalizer.Controllers
 
             return Ok(result);
         }
+
+        [HttpGet]
+        [Route("audio-features")]
+        public async Task<IActionResult> GetPlaylistAudioFeatures(string playlistId)
+        {
+            var result = await Mediator.Send(new GetPlaylistTracksAudioFeaturesQuery() { PlaylistIdentifier = playlistId });
+
+            return Ok(result);
+        }
+
+        [HttpGet]
+        [Route("audio-features/avarage")]
+        public async Task<IActionResult> GetPlaylistAvarageAudioFeatures(string playlistId)
+        {
+            var result = await Mediator.Send(new GetPlaylistAvarageAudioFeatureQuery() {  PlaylistIdentifier = playlistId });
+
+            return Ok(result);
+        }
     }
 }

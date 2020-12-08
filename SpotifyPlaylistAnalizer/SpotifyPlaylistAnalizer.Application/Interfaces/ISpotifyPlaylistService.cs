@@ -9,6 +9,7 @@ namespace SpotifyPlaylistAnalizer.Application.Interfaces
     {
         Task<PlaylistFull> GetPlaylistInfoById(string playListId);
         Task<List<AudioFeatures>> GetPlayListAudioFeatures(string playlistId);
+        Task<AudioFeatures> GetPlayListAvarageAudioFeature(string playlistId);
         Task<PlaylistSimplified> GetPlaylistSimplifiedAsync(string playlistId);
     }
 }
